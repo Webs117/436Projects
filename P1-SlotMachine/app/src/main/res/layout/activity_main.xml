@@ -106,18 +106,21 @@
         android:id="@+id/label_bank"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/strBankLabel"
         android:layout_above="@+id/btnNewGame"
-        android:layout_alignEnd="@+id/title"
-        android:layout_alignRight="@+id/title"
-        android:text="@string/strBankLabel" />
+        android:layout_alignRight="@+id/input_amount"
+        android:layout_alignEnd="@+id/input_amount" />
 
     <TextView
         android:id="@+id/displayBankAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/label_bank"
-        android:layout_toEndOf="@+id/label_bank"
+        android:text="@string/strDefaultAmount"
+        android:layout_alignBaseline="@+id/label_bank"
+        android:layout_alignBottom="@+id/label_bank"
         android:layout_toRightOf="@+id/label_bank"
-        android:text="@string/strDefaultAmount" />
+        android:layout_toEndOf="@+id/label_bank"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp" />
 
 </RelativeLayout>
