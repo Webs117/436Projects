@@ -23,6 +23,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
         Button btnNewGame = (Button)findViewById(R.id.btnNewGame);
         Button btnRunSlot = (Button)findViewById(R.id.btnRunSlot);
 
+        btnRunSlot.setEnabled(false);
 
         btnSetValue.setOnClickListener(this);
         btnNewGame.setOnClickListener(this);
@@ -32,11 +33,10 @@ public class MainActivity extends Activity implements View.OnClickListener{
     @Override
     public void onClick(View v){
         if(v.getId() == R.id.btn_setVal){
-            // do stuff
+            //Set Value Functionality
+
             EditText inputAmt = (EditText) findViewById(R.id.input_amount);
-
             String tempAmt = inputAmt.getText().toString();
-
             int amt = Integer.parseInt(tempAmt);
 
             if( amt < 100 || amt > 500){
@@ -46,12 +46,16 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
                 Bank.setAmount(amt);
 
+                //update
                 TextView displayAmt = (TextView)findViewById(R.id.displayBankAmount);
-                displayAmt.setText("$" + Integer.toString(Bank.getAmount()));
+                displayAmt.setText(Bank.getStrAmount());
 
+                Button btnRunSlot = (Button)findViewById(R.id.btnRunSlot);
+                btnRunSlot.setEnabled(true);
+
+                //disable buttons and text
                 inputAmt.clearFocus();
                 inputAmt.setEnabled(false);
-
                 //we are in setVal button event so v should be the Set Value button
                 v.setEnabled(false);
 
@@ -60,7 +64,11 @@ public class MainActivity extends Activity implements View.OnClickListener{
         }else if(v.getId() ==R.id.btnNewGame){
 
             Button btnSetValue = (Button)findViewById(R.id.btn_setVal);
+
             btnSetValue.setEnabled(true);
+
+            Button btnRunSlot = (Button)findViewById(R.id.btnRunSlot);
+            btnRunSlot.setEnabled(false);
 
             EditText inputAmt = (EditText) findViewById(R.id.input_amount);
             inputAmt.setText("");
@@ -71,10 +79,49 @@ public class MainActivity extends Activity implements View.OnClickListener{
             displayAmt.setText(Bank.getStrAmount());
 
         }else if(v.getId() ==R.id.btnRunSlot){
-            //do stuff
-            int slot1;
-            int slot2;
-            int slot3;
+            //Pull the lever
+            Bank.subtract(5);
+
+            TextView displayAmt = (TextView)findViewById(R.id.displayBankAmount);
+            displayAmt.setText(Bank.getStrAmount());
+
+            SlotMachine.pullLever();
+
+            TextView dispSlot1 = (TextView)findViewById(R.id.slot1);
+            TextView dispSlot2 = (TextView)findViewById(R.id.slot2);
+            TextView dispSlot3 = (TextView)findViewById(R.id.slot3);
+
+            int slot1Val = SlotMachine.getSlot1();
+            int slot2Val = SlotMachine.getSlot2();
+            int slot3Val = SlotMachine.getSlot3();
+
+            dispSlot1.setText(Integer.toString(slot1Val));
+            dispSlot2.setText(Integer.toString(slot2Val));
+            dispSlot3.setText(Integer.toString(slot3Val));
+
+            //check reward. if else short circuit
+            if(slot1Val == slot2Val && slot1Val == slot3Val && slot2Val == slot3Val){
+                if(slot1Val == 9){
+                    //get 1000
+                }else if(slot1Val >= 5){
+                    //get 100
+                }else{
+                    //get 40
+                }
+            }else if (slot1Val == slot2Val || slot1Val == slot3Val || slot2Val == slot3Val){
+                //get $10
+
+            }else{
+                //just lose $5
+            }
+
+            if(Bank.getAmount() >= 1000){
+                //win new game
+            }else if(Bank.getAmount() <= 0){
+                //lose. new game
+            }else{
+                //nothing
+            }
 
         }
     }
