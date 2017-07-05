@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">Game Character Creation</string>
     <string name="warriorClass">Warrior</string>
+    <string name="mageClass">Mage</string>
+    <string name="healerClass">Healer</string>
+    <string name="hunterClass">Hunter</string>
+    <string name="paladinClass">Palaldin</string>
+    <string name="statStr">Strength</string>
+    <string name="statIntel">Intelligence</string>
+    <string name="statWis">Wisdom</string>
+    <string name="statDex">Dexterity</string>
+    <string name="strPointslabel">Points left to spend:</string>
+    <string name="strPointsDefValue">0</string>
 </resources>

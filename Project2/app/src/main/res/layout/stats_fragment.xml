@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <RatingBar
+        android:id="@+id/strengthRatingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="54dp"
+        android:layout_below="@+id/Class_Title"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="17dp"
+        android:layout_marginEnd="17dp" />
+
+    <TextView
+        android:id="@+id/Class_Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Class title here"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/strengthRatingBar"
+        android:layout_alignStart="@+id/strengthRatingBar" />
+
+    <TextView
+        android:id="@+id/statStrLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/strengthRatingBar"
+        android:layout_marginLeft="18dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="19dp"
+        android:text="@string/statStr" />
+
+    <RatingBar
+        android:id="@+id/intelligenceRatingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/strengthRatingBar"
+        android:layout_alignRight="@+id/strengthRatingBar"
+        android:layout_below="@+id/strengthRatingBar"
+        android:layout_marginTop="41dp" />
+
+    <RatingBar
+        android:id="@+id/wisdomRatingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:layout_below="@+id/intelligenceRatingBar"
+        android:layout_alignLeft="@+id/intelligenceRatingBar"
+        android:layout_alignStart="@+id/intelligenceRatingBar" />
+
+    <RatingBar
+        android:id="@+id/dexterityRatingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/wisdomRatingBar"
+        android:layout_alignRight="@+id/wisdomRatingBar"
+        android:layout_below="@+id/wisdomRatingBar"
+        android:layout_marginTop="38dp" />
+
+    <TextView
+        android:id="@+id/statIntelLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/statStrLabel"
+        android:layout_alignStart="@+id/statStrLabel"
+        android:layout_alignTop="@+id/intelligenceRatingBar"
+        android:layout_marginTop="14dp"
+        android:text="@string/statIntel" />
+
+    <TextView
+        android:id="@+id/statWisLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/statIntelLabel"
+        android:layout_alignStart="@+id/statIntelLabel"
+        android:layout_alignTop="@+id/wisdomRatingBar"
+        android:layout_marginTop="15dp"
+        android:text="@string/statWis" />
+
+    <TextView
+        android:id="@+id/statDexLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/statWisLabel"
+        android:layout_alignStart="@+id/statWisLabel"
+        android:layout_alignTop="@+id/dexterityRatingBar"
+        android:layout_marginTop="15dp"
+        android:text="@string/statDex" />
+
+    <TextView
+        android:id="@+id/pointsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/statDexLabel"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/statDexLabel"
+        android:layout_marginBottom="13dp"
+        android:text="@string/strPointslabel" />
+
+    <TextView
+        android:id="@+id/displayPointsLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/pointsLabel"
+        android:layout_marginLeft="22dp"
+        android:layout_marginStart="22dp"
+        android:layout_toEndOf="@+id/pointsLabel"
+        android:layout_toRightOf="@+id/pointsLabel"
+        android:text="@string/strPointsDefValue" />
+
+</RelativeLayout>
