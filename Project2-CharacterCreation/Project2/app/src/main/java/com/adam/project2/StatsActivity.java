@@ -89,7 +89,6 @@ public class StatsActivity extends Activity implements RatingBar.OnRatingBarChan
             }
         }
 
-
         if(update){
 
             Editor editor = savedValues.edit();
@@ -113,9 +112,6 @@ public class StatsActivity extends Activity implements RatingBar.OnRatingBarChan
             bar.setRating(previousValue);
 
         }
-
-
-
 
     }
 

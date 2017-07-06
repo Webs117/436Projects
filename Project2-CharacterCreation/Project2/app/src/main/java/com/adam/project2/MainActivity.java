@@ -33,8 +33,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
         btnHunter.setOnClickListener(this);
         btnPaladin.setOnClickListener(this);
 
-
-
         if ((getResources().getConfiguration().screenLayout &
                 Configuration.SCREENLAYOUT_SIZE_MASK) !=
                 Configuration.SCREENLAYOUT_SIZE_LARGE) {
@@ -45,13 +43,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         }
 
-
-
     }
 
     @Override
     public void onClick(View v){
 
+        //If not a large screen go to second activity
         if ((getResources().getConfiguration().screenLayout &
                 Configuration.SCREENLAYOUT_SIZE_MASK) !=
                 Configuration.SCREENLAYOUT_SIZE_LARGE) {
@@ -72,12 +69,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
             startActivity(intent);
 
+        //Large screen view
         }else{
-
+            //TODO: Load statsFragment values based on class button pressed
         }
-
-
-
     }
 
     public void displayScreenSize(){
