@@ -36,6 +36,7 @@ public class StatsActivity extends Activity implements RatingBar.OnRatingBarChan
         Intent intent = getIntent();
 
         characterClass = intent.getStringExtra("class");
+
         TextView title = (TextView)findViewById(R.id.Class_Title);
         title.setText(characterClass);
 
@@ -44,23 +45,18 @@ public class StatsActivity extends Activity implements RatingBar.OnRatingBarChan
         RatingBar wisdomBar = (RatingBar)findViewById(R.id.wisdomRatingBar);
         RatingBar dexterityBar = (RatingBar)findViewById(R.id.dexterityRatingBar);
 
-        float strengthRating = savedValues.getFloat(characterClass + "strength", 0.0f);
-        float intelligenceRating = savedValues.getFloat(characterClass + "intelligence", 0.0f);
-        float wisdomRating = savedValues.getFloat(characterClass + "wisdom", 0.0f);
-        float dexterityRating = savedValues.getFloat(characterClass + "dexterity", 0.0f);
-
-        previousStrengthRating = strengthRating;
-        previousIntelligenceRating = intelligenceRating;
-        previousWisdomRating = wisdomRating;
-        previousDexterityRating = dexterityRating;
+        previousStrengthRating = savedValues.getFloat(characterClass + "strength", 0.0f);
+        previousIntelligenceRating = savedValues.getFloat(characterClass + "intelligence", 0.0f);
+        previousWisdomRating = savedValues.getFloat(characterClass + "wisdom", 0.0f);
+        previousDexterityRating = savedValues.getFloat(characterClass + "dexterity", 0.0f);
 
         //Get points remaining from saved values
-        pointsLeft = pointsLeft - strengthRating - intelligenceRating - wisdomRating - dexterityRating;
+        pointsLeft = pointsLeft - previousStrengthRating - previousIntelligenceRating - previousWisdomRating - previousDexterityRating;
 
-        strengthBar.setRating(strengthRating);
-        intelligenceBar.setRating(intelligenceRating);
-        wisdomBar.setRating(wisdomRating);
-        dexterityBar.setRating(dexterityRating);
+        strengthBar.setRating(previousStrengthRating);
+        intelligenceBar.setRating(previousIntelligenceRating);
+        wisdomBar.setRating(previousWisdomRating);
+        dexterityBar.setRating(previousDexterityRating);
 
         TextView pointsLeftLabel = (TextView)findViewById(R.id.displayPointsLeft);
         pointsLeftLabel.setText(Float.toString(pointsLeft));
@@ -74,7 +70,7 @@ public class StatsActivity extends Activity implements RatingBar.OnRatingBarChan
     public void onRatingChanged(RatingBar bar, float rating, boolean fromUser){
 
         boolean update = false;
-        float newPointsLeft;
+        float newPointsLeft = pointsLeft;
         String preferenceStr = characterClass + this.getRatingBarType(bar.toString());
 
         float previousValue = this.getPreviousRating(preferenceStr);
@@ -86,7 +82,7 @@ public class StatsActivity extends Activity implements RatingBar.OnRatingBarChan
                 update = true;
             }
          //Increased rating from previous value
-        }else{
+        }else if (previousValue < rating){
             newPointsLeft = pointsLeft - (rating-previousValue);
             if(newPointsLeft >= 0){
                 update = true;
@@ -96,23 +92,24 @@ public class StatsActivity extends Activity implements RatingBar.OnRatingBarChan
 
         if(update){
 
-
             Editor editor = savedValues.edit();
 
-
+            //Update SavedPreference
             editor.putFloat(preferenceStr, rating);
             editor.commit();
 
             setPreviousRating(preferenceStr,rating);
 
             pointsLeft = newPointsLeft;
+
             TextView pointsLeftLabel = (TextView)findViewById(R.id.displayPointsLeft);
             pointsLeftLabel.setText(Float.toString(pointsLeft));
         }else{
             Toast.makeText(getApplicationContext(), "Not enough points",
                     Toast.LENGTH_SHORT).show();
 
-            //reset bar. needs testing
+            //reset bar.
+            // this causes the program to loop into this onRatingChange again. Need to cover rating = previousValue case
             bar.setRating(previousValue);
 
         }
@@ -140,8 +137,8 @@ public class StatsActivity extends Activity implements RatingBar.OnRatingBarChan
             return this.previousIntelligenceRating;
         }else if(type.equals(characterClass + "wisdom")){
             return this.previousWisdomRating;
-        }else if(type.equals(characterClass + "intelligence")){
-            return this.previousWisdomRating;
+        }else if(type.equals(characterClass + "dexterity")){
+            return this.previousDexterityRating;
         }
 
         return 0.0f;
@@ -154,8 +151,8 @@ public class StatsActivity extends Activity implements RatingBar.OnRatingBarChan
              this.previousIntelligenceRating = rating;
         }else if(type.equals(characterClass + "wisdom")){
              this.previousWisdomRating = rating;
-        }else if(type.equals(characterClass + "intelligence")){
-             this.previousWisdomRating = rating;
+        }else if(type.equals(characterClass + "dexterity")){
+             this.previousDexterityRating = rating;
         }
     }
 }

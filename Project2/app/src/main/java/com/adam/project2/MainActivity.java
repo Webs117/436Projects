@@ -1,19 +1,19 @@
 package com.adam.project2;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
+import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 //Small device plan:
 //Second activity for stats screen
 //Use fragment to load preferences
-public class MainActivity extends FragmentActivity implements View.OnClickListener {
-
-    Fragment stats = new StatsFragment();
+public class MainActivity extends Activity implements View.OnClickListener {
 
 
     @Override
@@ -34,31 +34,71 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         btnPaladin.setOnClickListener(this);
 
 
-//        FragmentManager fm = getSupportFragmentManager();
-//        fm.beginTransaction()
-//                .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
-//                .replace(android.R.id.content, stats)
-//                .commit();
+
+        if ((getResources().getConfiguration().screenLayout &
+                Configuration.SCREENLAYOUT_SIZE_MASK) !=
+                Configuration.SCREENLAYOUT_SIZE_LARGE) {
+
+            FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+            fragmentTransaction.hide(getFragmentManager().findFragmentById(R.id.statsFragment));
+            fragmentTransaction.commit();
+
+        }
+
+
 
     }
 
     @Override
     public void onClick(View v){
-        Intent intent = new Intent(this, StatsActivity.class);
 
-        if(v.getId() == R.id.warriorBtn){
-            intent.putExtra("class", "Warrior");
-        }else if(v.getId() == R.id.mageBtn){
-            intent.putExtra("class", "Mage");
-        }else if(v.getId() == R.id.healerBtn){
-            intent.putExtra("class", "Healer");
-        }else if(v.getId() == R.id.hunterBtn){
-            intent.putExtra("class", "Hunter");
+        if ((getResources().getConfiguration().screenLayout &
+                Configuration.SCREENLAYOUT_SIZE_MASK) !=
+                Configuration.SCREENLAYOUT_SIZE_LARGE) {
+
+            Intent intent = new Intent(this, StatsActivity.class);
+
+            if(v.getId() == R.id.warriorBtn){
+                intent.putExtra("class", "Warrior");
+            }else if(v.getId() == R.id.mageBtn){
+                intent.putExtra("class", "Mage");
+            }else if(v.getId() == R.id.healerBtn){
+                intent.putExtra("class", "Healer");
+            }else if(v.getId() == R.id.hunterBtn){
+                intent.putExtra("class", "Hunter");
+            }else{
+                intent.putExtra("class", "Paladin");
+            }
+
+            startActivity(intent);
+
         }else{
-            intent.putExtra("class", "Paladin");
+
         }
 
-        startActivity(intent);
+
+
+    }
+
+    public void displayScreenSize(){
+        int screenSize = getResources().getConfiguration().screenLayout &
+                Configuration.SCREENLAYOUT_SIZE_MASK;
+
+        String toastMsg;
+        switch(screenSize) {
+            case Configuration.SCREENLAYOUT_SIZE_LARGE:
+                toastMsg = "Large screen";
+                break;
+            case Configuration.SCREENLAYOUT_SIZE_NORMAL:
+                toastMsg = "Normal screen";
+                break;
+            case Configuration.SCREENLAYOUT_SIZE_SMALL:
+                toastMsg = "Small screen";
+                break;
+            default:
+                toastMsg = "Screen size is neither large, normal or small";
+        }
+        Toast.makeText(this, toastMsg, Toast.LENGTH_LONG).show();
 
     }
 
