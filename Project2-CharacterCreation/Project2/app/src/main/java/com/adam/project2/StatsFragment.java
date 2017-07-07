@@ -9,12 +9,24 @@ import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 public class StatsFragment extends Fragment {
+
+    TextView title;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.stats_fragment, container, false);
+
+        title = (TextView) view.findViewById(R.id.Class_Title);
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.stats_fragment, container, false);
+        return view;
+    }
+
+    public void loadValues(String characterClass){
+        title.setText(characterClass);
     }
 }

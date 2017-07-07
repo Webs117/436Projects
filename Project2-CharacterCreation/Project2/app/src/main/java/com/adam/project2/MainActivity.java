@@ -1,5 +1,6 @@
 package com.adam.project2;
 
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -72,6 +73,17 @@ public class MainActivity extends Activity implements View.OnClickListener {
         //Large screen view
         }else{
             //TODO: Load statsFragment values based on class button pressed
+
+            FragmentManager mgr = getFragmentManager();
+            StatsFragment statsFrag = (StatsFragment)mgr.findFragmentById(R.id.statsFragment);
+
+            if(v.getId() == R.id.warriorBtn){
+                statsFrag.loadValues("Warrior");
+            }else if(v.getId() == R.id.mageBtn){
+            }else if(v.getId() == R.id.healerBtn){
+            }else if(v.getId() == R.id.hunterBtn){
+            }else{
+            }
         }
     }
 
