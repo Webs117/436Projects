@@ -1,5 +1,17 @@
 package com.adam.project2;
 
+
+/**
+ * Program Name: Character class creation
+ * Class: CIS 436
+ * Instructor Name: PROF. JOHN P. BAUGH
+ * Program Number: 2
+ * Author: Adam Giaccaglia (aggiacca)
+ * Date: 7/4/2017.
+ *
+ */
+
+
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -11,9 +23,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-//Small device plan:
-//Second activity for stats screen
-//Use fragment to load preferences
+
 public class MainActivity extends Activity implements View.OnClickListener {
 
 
@@ -34,6 +44,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         btnHunter.setOnClickListener(this);
         btnPaladin.setOnClickListener(this);
 
+        //show fragment if large screen
         if ((getResources().getConfiguration().screenLayout &
                 Configuration.SCREENLAYOUT_SIZE_MASK) !=
                 Configuration.SCREENLAYOUT_SIZE_LARGE) {
@@ -41,15 +52,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
             FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
             fragmentTransaction.hide(getFragmentManager().findFragmentById(R.id.statsFragment));
             fragmentTransaction.commit();
-
         }
-
     }
 
     @Override
     public void onClick(View v){
 
-        //If not a large screen go to second activity
+        //If not a large screen go to second activity instead of updating fragment
         if ((getResources().getConfiguration().screenLayout &
                 Configuration.SCREENLAYOUT_SIZE_MASK) !=
                 Configuration.SCREENLAYOUT_SIZE_LARGE) {
@@ -72,7 +81,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         //Large screen view
         }else{
-            //TODO: Load statsFragment values based on class button pressed
 
             FragmentManager mgr = getFragmentManager();
             StatsFragment statsFrag = (StatsFragment)mgr.findFragmentById(R.id.statsFragment);
@@ -80,9 +88,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
             if(v.getId() == R.id.warriorBtn){
                 statsFrag.loadValues("Warrior");
             }else if(v.getId() == R.id.mageBtn){
+                statsFrag.loadValues("Mage");
             }else if(v.getId() == R.id.healerBtn){
+                statsFrag.loadValues("Healer");
             }else if(v.getId() == R.id.hunterBtn){
+                statsFrag.loadValues("Hunter");
             }else{
+                statsFrag.loadValues("Paladin");
             }
         }
     }
