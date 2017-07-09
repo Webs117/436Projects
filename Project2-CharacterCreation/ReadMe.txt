@@ -11,4 +11,7 @@ Helpful Links:
 		-Use android.app.Fragment: https://stackoverflow.com/questions/15109017/difference-between-android-app-fragment-and-android-support-v4-app-fragment
 		-Hide Fragment: https://stackoverflow.com/questions/14347588/show-hide-fragment-in-android
 		-Get Fragment from XML layout: https://stackoverflow.com/questions/13911261/how-to-get-a-fragment-added-in-an-xml-layout
+		-Replacing Fragments: https://stackoverflow.com/questions/5658675/replacing-a-fragment-with-another-fragment-inside-activity-group
+		-SharedPreferences in fragment: https://stackoverflow.com/questions/11741270/android-sharedpreferences-in-fragment
+		
 
