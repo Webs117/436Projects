@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">NewYearCountdown</string>
+    <string name="timeInputLabel">Time to Count Down:</string>
+    <string name="setCountBtn">Set Count Down</string>
+    <string name="notifLabel">Highest Notification: </string>
+    <string name="mesasgeLabel">Message:</string>
+    <string name="cntDwnBtnLabel">Start Countdown</string>
+</resources>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.adam.newyearcountdown.MainActivity">
+
+    <TextView
+        android:id="@+id/timeInputLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="45dp"
+        android:text="@string/timeInputLabel" />
+
+    <EditText
+        android:id="@+id/inputTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/timeInputLabel"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:ems="10"
+        android:inputType="time" />
+
+    <Button
+        android:id="@+id/setCountBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="37dp"
+        android:text="@string/setCountBtn"
+        android:layout_below="@+id/inputTime"
+        android:layout_alignLeft="@+id/inputTime"
+        android:layout_alignStart="@+id/inputTime"
+        android:layout_marginLeft="22dp"
+        android:layout_marginStart="22dp" />
+
+    <TextView
+        android:id="@+id/notifLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/timeInputLabel"
+        android:layout_alignStart="@+id/timeInputLabel"
+        android:layout_below="@+id/setCount"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="78dp"
+        android:text="@string/notifLabel" />
+
+    <TextView
+        android:id="@+id/notifText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/setCount"
+        android:layout_alignStart="@+id/setCount"
+        android:layout_alignTop="@+id/notifLabel"
+        android:layout_marginLeft="44dp"
+        android:layout_marginStart="44dp"
+        android:text="Replace" />
+
+    <TextView
+        android:id="@+id/messageLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/notifLabel"
+        android:layout_alignStart="@+id/notifLabel"
+        android:layout_below="@+id/notifLabel"
+        android:layout_marginTop="53dp"
+        android:text="@string/mesasgeLabel" />
+
+    <TextView
+        android:id="@+id/messageText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/messageLabel"
+        android:layout_alignLeft="@+id/setCount"
+        android:layout_alignStart="@+id/setCount"
+        android:text="TextView" />
+
+    <Button
+        android:id="@+id/countDownBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/messageText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="67dp"
+        android:text="@string/cntDwnBtnLabel" />
+</RelativeLayout>
