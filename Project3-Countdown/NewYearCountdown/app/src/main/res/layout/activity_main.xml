@@ -46,22 +46,11 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/timeInputLabel"
         android:layout_alignStart="@+id/timeInputLabel"
-        android:layout_below="@+id/setCount"
+        android:layout_below="@+id/setCountBtn"
         android:layout_marginLeft="15dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="78dp"
         android:text="@string/notifLabel" />
-
-    <TextView
-        android:id="@+id/notifText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/setCount"
-        android:layout_alignStart="@+id/setCount"
-        android:layout_alignTop="@+id/notifLabel"
-        android:layout_marginLeft="44dp"
-        android:layout_marginStart="44dp"
-        android:text="Replace" />
 
     <TextView
         android:id="@+id/messageLabel"
@@ -78,8 +67,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/messageLabel"
-        android:layout_alignLeft="@+id/setCount"
-        android:layout_alignStart="@+id/setCount"
+        android:layout_alignLeft="@+id/setCountBtn"
+        android:layout_alignStart="@+id/setCountBtn"
         android:text="TextView" />
 
     <Button
@@ -90,4 +79,12 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="67dp"
         android:text="@string/cntDwnBtnLabel" />
+
+    <Spinner
+        android:id="@+id/notifSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/messageText"
+        android:layout_alignStart="@+id/messageText"
+        android:layout_alignTop="@+id/notifLabel" />
 </RelativeLayout>
