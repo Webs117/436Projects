@@ -35,6 +35,7 @@ public class CountdownTask extends AsyncTask<String, Void, String> {
                     timer.cancel();
                 }
                 else if(timeNum <= highNotif){
+                    // send notification. don't need to update uithread
                     Toast.makeText(mContext, "Time left: " + timeNum, Toast.LENGTH_LONG).show();
                 }
             }
@@ -47,6 +48,7 @@ public class CountdownTask extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPostExecute(String result){
+        //update ui thread with message
         Toast.makeText(mContext, result, Toast.LENGTH_LONG).show();
     }
 
