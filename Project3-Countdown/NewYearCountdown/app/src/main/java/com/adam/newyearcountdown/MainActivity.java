@@ -20,9 +20,13 @@ import android.content.Intent;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static android.R.id.list;
+
 public class MainActivity extends Activity implements View.OnClickListener {
 
-        private ArrayAdapter<CharSequence> adapter;
         private Spinner spinner;
         private String countDownTime;
 
@@ -38,13 +42,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         btnStartCount.setOnClickListener(this);
 
         spinner = (Spinner) findViewById(R.id.notifSpinner);
-// Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.count_times, android.R.layout.simple_spinner_item);
-// Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-// Apply the adapter to the spinner
-        spinner.setAdapter(adapter);
+
         spinner.setEnabled(false);
 
     }
@@ -59,6 +57,19 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
             if(timeNum > 5 && timeNum <= 120 && timeNum % 5 == 0){
                 countDownTime = time;
+
+                String[] arraySpinner;
+
+                arraySpinner = getHighNotif(timeNum);
+
+                // Create an ArrayAdapter using the string array and a default spinner layout
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                        android.R.layout.simple_spinner_item, arraySpinner);
+                // Specify the layout to use when the list of choices appears
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                // Apply the adapter to the spinner
+                spinner.setAdapter(adapter);
+
                 spinner.setEnabled(true);
             }else{
                 spinner.setEnabled(false);
@@ -69,8 +80,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
             EditText messageInput = (EditText) findViewById(R.id.messageText);
             String message = messageInput.getText().toString();
 
-            Toast.makeText(this, "Countdown has been started", Toast.LENGTH_LONG).show();
-
             Intent serviceIntent = new Intent(this, CountdownService.class);
             serviceIntent.putExtra("countDownTime", countDownTime);
             serviceIntent.putExtra("startNotifTime", spinnerItem);
@@ -80,6 +89,29 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         }
 
+    }
+
+    public String[] getHighNotif(int time){
+        ArrayList<String> allValues = new ArrayList<String>();
+        allValues.add("90");
+        allValues.add("60");
+        allValues.add("30");
+        allValues.add("20");
+        allValues.add("10");
+        allValues.add("5");
+        allValues.add("1");
+
+        List<String> sub = new ArrayList<String>();
+
+        int limit = allValues.size();
+
+        for(int i = 0; i < limit; i++){
+            if(time > Integer.parseInt(allValues.get(i))){
+                sub = allValues.subList(i, limit);
+                i = limit;
+            }
+        }
+        return sub.toArray(new String[0]);
     }
 
 }

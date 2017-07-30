@@ -87,7 +87,7 @@ public class CountdownService extends Service {
                         sendNotification("Countdown App", "Time for: " + message);
                         timer.cancel();
                     }
-                    else if(timeNum <= highNotif){
+                    else if(timeNum <= highNotif && containsNotif(timeNum)){
                         // send notification. don't need to update uithread
                         sendNotification("Countdown App",timeNum + " seconds left until Happy New Year");
                     }
@@ -96,7 +96,14 @@ public class CountdownService extends Service {
 
             timer.schedule(task,0,1000);
 
-            return "hello";
+            return "Countdown has been started";
+        }
+
+        public boolean containsNotif(int value){
+            if(value == 1 || value == 5 ||value == 10 ||value == 20 ||value == 30 ||value == 60 ||value == 90)
+                return true;
+            else
+                return false;
         }
 
         @Override
