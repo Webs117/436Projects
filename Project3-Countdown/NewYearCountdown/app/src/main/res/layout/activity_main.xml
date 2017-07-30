@@ -62,29 +62,35 @@
         android:layout_marginTop="53dp"
         android:text="@string/mesasgeLabel" />
 
-    <TextView
-        android:id="@+id/messageText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/messageLabel"
-        android:layout_alignLeft="@+id/setCountBtn"
-        android:layout_alignStart="@+id/setCountBtn"
-        android:text="TextView" />
-
     <Button
         android:id="@+id/countDownBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/messageText"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="67dp"
-        android:text="@string/cntDwnBtnLabel" />
+        android:layout_marginTop="66dp"
+        android:text="@string/cntDwnBtnLabel"
+        android:layout_below="@+id/messageLabel"
+        android:layout_toRightOf="@+id/messageLabel"
+        android:layout_toEndOf="@+id/messageLabel"
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp" />
 
     <Spinner
         android:id="@+id/notifSpinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/messageText"
-        android:layout_alignStart="@+id/messageText"
-        android:layout_alignTop="@+id/notifLabel" />
+        android:layout_alignTop="@+id/notifLabel"
+        android:layout_toEndOf="@+id/notifLabel" />
+
+    <EditText
+        android:id="@+id/messageText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/notifSpinner"
+        android:layout_alignRight="@+id/notifSpinner"
+        android:layout_alignTop="@+id/messageLabel"
+        android:layout_marginEnd="41dp"
+        android:layout_marginRight="41dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/messageDefaultText" />
 </RelativeLayout>

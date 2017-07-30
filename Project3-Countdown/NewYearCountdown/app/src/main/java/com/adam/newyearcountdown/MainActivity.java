@@ -61,44 +61,22 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 countDownTime = time;
                 spinner.setEnabled(true);
             }else{
-                spinner.setEnabled(true);
+                spinner.setEnabled(false);
             }
         }else if(v.getId() == R.id.countDownBtn){
             String spinnerItem = spinner.getSelectedItem().toString();
-            Toast.makeText(getApplicationContext(), "Spinner value: " + spinnerItem, Toast.LENGTH_LONG).show();
-            Toast.makeText(getApplicationContext(), "Countdown has been started.", Toast.LENGTH_LONG).show();
-            //new CountdownTask(getApplicationContext()).execute(countDownTime, spinnerItem);
 
+            EditText messageInput = (EditText) findViewById(R.id.messageText);
+            String message = messageInput.getText().toString();
 
-            Notification.Builder mBuilder =
-                    new Notification.Builder(this)
-                            .setSmallIcon(R.mipmap.ic_launcher)
-                            .setContentTitle("My notification")
-                            .setContentText("Hello World!");
+            Toast.makeText(this, "Countdown has been started", Toast.LENGTH_LONG).show();
 
-            Intent resultIntent = new Intent(this, MainActivity.class);
-            // Because clicking the notification opens a new ("special") activity, there's
-            // no need to create an artificial back stack.
-            PendingIntent resultPendingIntent =
-                    PendingIntent.getActivity(
-                            this,
-                            0,
-                            resultIntent,
-                            PendingIntent.FLAG_UPDATE_CURRENT
-                    );
+            Intent serviceIntent = new Intent(this, CountdownService.class);
+            serviceIntent.putExtra("countDownTime", countDownTime);
+            serviceIntent.putExtra("startNotifTime", spinnerItem);
+            serviceIntent.putExtra("message", message);
 
-            // Sets an ID for the notification
-            int mNotificationId = 001;
-            // Gets an instance of the NotificationManager service
-            NotificationManager mNotifyMgr =
-                    (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-
-            //add pending intent
-            mBuilder.setContentIntent(resultPendingIntent);
-
-            // Builds the notification and issues it.
-            mNotifyMgr.notify(mNotificationId, mBuilder.build());
-
+            startService(serviceIntent);
 
         }
 

@@ -5,6 +5,7 @@
     <string name="notifLabel">Highest Notification: </string>
     <string name="mesasgeLabel">Message:</string>
     <string name="cntDwnBtnLabel">Start Countdown</string>
+    <string name="messageDefaultText">Insert Message...</string>
     <string-array name="count_times">
         <item>90</item>
         <item>60</item>

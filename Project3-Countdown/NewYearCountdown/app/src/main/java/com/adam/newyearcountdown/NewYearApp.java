@@ -1,6 +1,7 @@
 package com.adam.newyearcountdown;
 
 import android.app.Application;
+import android.content.Intent;
 import android.util.Log;
 
 /**
