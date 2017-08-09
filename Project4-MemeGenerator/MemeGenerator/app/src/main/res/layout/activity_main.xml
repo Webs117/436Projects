@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.adam.memegenerator.MainActivity">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="29dp"
+        android:text="@string/titleStr" />
+
+    <Button
+        android:id="@+id/btnImgFrGallery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="44dp"
+        android:text="@string/btn_gallery_str" />
+
+    <ImageView
+        android:id="@+id/previewImg"
+        android:layout_width="200px"
+        android:layout_height="200px"
+        android:layout_marginTop="37dp"
+        android:src="@android:drawable/ic_menu_camera"
+        android:layout_below="@+id/previewLabel"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/previewLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/previewLabel_str"
+        android:layout_below="@+id/btnImgFrGallery"
+        android:layout_toLeftOf="@+id/title"
+        android:layout_toStartOf="@+id/title"
+        android:layout_marginTop="59dp" />
+
+    <Button
+        android:id="@+id/makeMemeBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="51dp"
+        android:text="@string/makeMemeBtn_str"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>

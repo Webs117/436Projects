@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.adam.memegenerator.Meme">
+
+    <TextView
+        android:id="@+id/topTitleLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="35dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/topLabel_str" />
+
+    <EditText
+        android:id="@+id/topTextInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="insert top text"
+        android:inputType="textPersonName"
+        android:layout_alignBottom="@+id/topTitleLabel"
+        android:layout_toRightOf="@+id/topTitleLabel"
+        android:layout_toEndOf="@+id/topTitleLabel"
+        android:layout_marginLeft="23dp"
+        android:layout_marginStart="23dp" />
+
+    <TextView
+        android:id="@+id/botTextLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/topTitleLabel"
+        android:layout_alignStart="@+id/topTitleLabel"
+        android:layout_below="@+id/topTitleLabel"
+        android:layout_marginTop="56dp"
+        android:text="@string/botText_str" />
+
+    <EditText
+        android:id="@+id/botTextInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/botTextLabel"
+        android:layout_marginLeft="19dp"
+        android:layout_marginStart="19dp"
+        android:layout_toEndOf="@+id/botTextLabel"
+        android:layout_toRightOf="@+id/botTextLabel"
+        android:ems="10"
+        android:hint="Insert bottom text"
+        android:inputType="textPersonName" />
+
+    <ImageView
+        android:id="@+id/memeImg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@android:drawable/ic_menu_camera"
+        android:layout_marginTop="22dp"
+        android:layout_below="@+id/setMemeTextBtn"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp" />
+
+    <TextView
+        android:id="@+id/topText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/memeImg"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="13dp"
+        android:textColor="@color/memeTextColor"
+        android:shadowColor="#000000"
+        android:shadowDx="1.5"
+        android:shadowDy="1.3"
+        android:shadowRadius="1.6"
+        android:textAllCaps="true"
+        android:textSize="40sp"/>
+
+    <TextView
+        android:id="@+id/bottomText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/memeImg"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="13dp"
+        android:textColor="@color/memeTextColor"
+        android:shadowColor="#000000"
+        android:shadowDx="1.5"
+        android:shadowDy="1.3"
+        android:shadowRadius="1.6"
+        android:textAllCaps="true"
+        android:textSize="40sp"/>
+
+    <Button
+        android:id="@+id/setMemeTextBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/botTextInput"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:text="@string/setMemeTextBtn_str" />
+</RelativeLayout>

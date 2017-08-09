@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">MemeGenerator</string>
+    <string name="titleStr">Meme Generator</string>
+    <string name="btn_gallery_str">Gallery</string>
+    <string name="topLabel_str">Top text: </string>
+    <string name="botText_str">Bottom Text:</string>
+    <string name="previewLabel_str">Preview of Image:</string>
+    <string name="makeMemeBtn_str">Let\'s make a meme!</string>
+    <string name="setMemeTextBtn_str">Set Meme Text</string>
+</resources>
