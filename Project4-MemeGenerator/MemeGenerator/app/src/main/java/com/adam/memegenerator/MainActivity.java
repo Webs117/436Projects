@@ -11,11 +11,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
+import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import java.io.IOException;
 import java.net.URI;
 
-public class MainActivity extends Activity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private int IMAGE_PICKER_SELECT = 1;
 
@@ -28,6 +36,10 @@ public class MainActivity extends Activity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //TODO: Try and get action bar to work
+      //  Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+      //  setSupportActionBar(toolbar);
+
         Button btnGallery = (Button)findViewById(R.id.btnImgFrGallery);
         btnMakeMeme = (Button)findViewById(R.id.makeMemeBtn);
 
@@ -35,6 +47,9 @@ public class MainActivity extends Activity implements View.OnClickListener{
         btnMakeMeme.setOnClickListener(this);
 
         btnMakeMeme.setEnabled(false);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.settingsFab);
+        fab.setOnClickListener(this);
 
     }
 
@@ -53,7 +68,36 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
             startActivity(intent);
         }
+        if(v.getId() == R.id.settingsFab){
+            Intent modifySettings=new Intent(MainActivity.this, SettingsActivity.class);
+            startActivity(modifySettings);
+        }
     }
+
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.menu_main, menu);
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            Intent modifySettings=new Intent(MainActivity.this, SettingsActivity.class);
+//            startActivity(modifySettings);
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
+
+    // Handles gallery selection event
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         if (requestCode == IMAGE_PICKER_SELECT  && resultCode == Activity.RESULT_OK) {

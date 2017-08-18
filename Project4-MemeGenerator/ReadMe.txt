@@ -17,6 +17,10 @@ Perference Ideas:
 
 save last image uri via shared preferences
 
+service that sends notification 
+
+service that saves image to device
+
 
 multi-threading:
 	load images from api via service
