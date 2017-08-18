@@ -63,13 +63,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             startActivityForResult(intent, IMAGE_PICKER_SELECT);
         }else if(v.getId() == R.id.makeMemeBtn){
-            Intent intent = new Intent(this, Meme.class);
+            Intent intent = new Intent(this, MemeActivity.class);
             intent.putExtra("MemeImageURI", imageURI.toString());
 
             startActivity(intent);
         }
         if(v.getId() == R.id.settingsFab){
-            Intent modifySettings=new Intent(MainActivity.this, SettingsActivity.class);
+            Intent modifySettings = new Intent(MainActivity.this, SettingsActivity.class);
             startActivity(modifySettings);
         }
     }
@@ -101,7 +101,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         if (requestCode == IMAGE_PICKER_SELECT  && resultCode == Activity.RESULT_OK) {
-            // some code
             try{
                 imageURI = data.getData();
 

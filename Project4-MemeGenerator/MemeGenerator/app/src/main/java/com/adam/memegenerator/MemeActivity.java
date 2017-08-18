@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
@@ -18,7 +19,7 @@ import android.widget.Toast;
 
 import java.io.IOException;
 
-public class Meme extends Activity implements View.OnClickListener {
+public class MemeActivity extends Activity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +52,10 @@ public class Meme extends Activity implements View.OnClickListener {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
 
         //TODO Add image size or some other preference to use in this activity
-        String syncConnPref = sharedPref.getString("example_text", "");
-        Toast.makeText(this, "Pref+ " + syncConnPref, Toast.LENGTH_LONG).show();
+        int intTopColor = sharedPref.getInt("topMemeTextColor", 123);
+        String hexColor = "#" + Integer.toHexString(intTopColor).substring(2);
+        Toast.makeText(this, "Pref+ " + hexColor, Toast.LENGTH_LONG).show();
+        topText.setTextColor(Color.parseColor(hexColor));
 
     }
 
