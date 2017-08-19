@@ -22,7 +22,7 @@ public class DBHandler extends SQLiteOpenHelper {
     // User table name
     private static final String USERS_TABLE = "users";
 
-    // Shops Table Columns names
+    // User Table Columns names
     private static final String USERS_KEY_ID = "id";
     private static final String USERS_KEY_USERNAME = "username";
     private static final String USERS_KEY_PASSWORD = "password";
@@ -46,9 +46,7 @@ public class DBHandler extends SQLiteOpenHelper {
     }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // Drop older table if existed
         db.execSQL("DROP TABLE IF EXISTS " + USERS_TABLE);
-        // Creating tables again
         onCreate(db);
     }
 
@@ -65,12 +63,8 @@ public class DBHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-    // Getting one shop
     public User getUser(String usrname) {
         SQLiteDatabase db = this.getReadableDatabase();
-//        Cursor cursor = db.query(USERS_TABLE, new String[] { USERS_KEY_ID,
-//                        USERS_KEY_USERNAME, USERS_KEY_PASSWORD }, USERS_KEY_USERNAME + "=",
-//                null, usrname, null, null, null);
         String selectUserByEmail = "SELECT * FROM " + USERS_TABLE + " WHERE " + USERS_KEY_USERNAME + "= ?";
         Cursor cursor = null;
         try{
@@ -80,8 +74,6 @@ public class DBHandler extends SQLiteOpenHelper {
         }
         cursor.moveToFirst();
         if (cursor.getCount() != 0){
-            // User contact = new User(Integer.parseInt(cursor.getString(0)),
-            // cursor.getString(1), cursor.getString(2));
             User usr = new User(cursor.getString(1), cursor.getString(2));
             return usr;
         }else{
