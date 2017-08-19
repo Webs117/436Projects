@@ -6,20 +6,6 @@
     android:layout_height="match_parent"
     tools:context="com.adam.memegenerator.MainActivity">
 
-    <!--<android.support.design.widget.AppBarLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:theme="@style/AppTheme.AppBarOverlay">-->
-
-        <!--<android.support.v7.widget.Toolbar-->
-            <!--android:id="@+id/toolbar"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="?attr/actionBarSize"-->
-            <!--android:background="?attr/colorPrimary"-->
-            <!--app:popupTheme="@style/AppTheme.PopupOverlay" />-->
-
-    <!--</android.support.design.widget.AppBarLayout>-->
-
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
@@ -40,12 +26,12 @@
 
     <ImageView
         android:id="@+id/previewImg"
-        android:layout_width="200px"
-        android:layout_height="200px"
-        android:layout_marginTop="37dp"
-        android:src="@android:drawable/ic_menu_camera"
+        android:layout_width="300px"
+        android:layout_height="300px"
         android:layout_below="@+id/previewLabel"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="37dp"
+        android:src="@android:drawable/ic_menu_camera" />
 
     <TextView
         android:id="@+id/previewLabel"
@@ -56,6 +42,17 @@
         android:layout_toLeftOf="@+id/title"
         android:layout_toStartOf="@+id/title"
         android:layout_marginTop="59dp" />
+
+    <TextView
+        android:id="@+id/galleryLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/galleryLabel_str"
+        android:layout_alignBaseline="@+id/btnImgFrGallery"
+        android:layout_alignBottom="@+id/btnImgFrGallery"
+        android:layout_alignLeft="@+id/previewLabel"
+        android:layout_alignStart="@+id/previewLabel" />
+
 
     <Button
         android:id="@+id/makeMemeBtn"

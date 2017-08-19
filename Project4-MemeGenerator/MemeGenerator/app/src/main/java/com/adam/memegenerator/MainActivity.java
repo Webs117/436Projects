@@ -37,8 +37,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         //TODO: Try and get action bar to work
-      //  Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-      //  setSupportActionBar(toolbar);
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+       // setSupportActionBar(toolbar);
 
         Button btnGallery = (Button)findViewById(R.id.btnImgFrGallery);
         btnMakeMeme = (Button)findViewById(R.id.makeMemeBtn);

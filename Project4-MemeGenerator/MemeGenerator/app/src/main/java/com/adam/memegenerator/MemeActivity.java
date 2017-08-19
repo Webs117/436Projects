@@ -51,11 +51,13 @@ public class MemeActivity extends Activity implements View.OnClickListener {
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
 
-        //TODO Add image size or some other preference to use in this activity
         int intTopColor = sharedPref.getInt("topMemeTextColor", 123);
-        String hexColor = "#" + Integer.toHexString(intTopColor).substring(2);
-        Toast.makeText(this, "Pref+ " + hexColor, Toast.LENGTH_LONG).show();
-        topText.setTextColor(Color.parseColor(hexColor));
+        String topHexColor = "#" + Integer.toHexString(intTopColor).substring(2);
+        topText.setTextColor(Color.parseColor(topHexColor));
+
+        int intBotColor = sharedPref.getInt("botMemeTextColor", 123);
+        String botHexColor = "#" + Integer.toHexString(intBotColor).substring(2);
+        botText.setTextColor(Color.parseColor(botHexColor));
 
     }
 
